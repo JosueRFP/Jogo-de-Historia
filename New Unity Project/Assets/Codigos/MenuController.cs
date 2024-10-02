@@ -1,18 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject creditsPainel;
+    
+    public void Teleport(string tp)
     {
-        
+        SceneManager.LoadScene(tp);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OpenCreditsBTN()
     {
-        
+        creditsPainel.SetActive(true);
+    }
+    public void CloseCreditsBTN()
+    {
+        creditsPainel.SetActive(false);
+    }
+
+    void Quit()
+    {
+        Application.Quit();
+        Debug.Log("Saiu do Jogo");
     }
 }
