@@ -21,9 +21,9 @@ public class MenuController : MonoBehaviour
         creditsPainel.SetActive(false);
     }
 
-    void Quit()
-    {
-        Application.Quit();
-        Debug.Log("Saiu do Jogo");
+    public void QuitBTN()
+    {        
+            Application.Quit();
+            Debug.Log("Quitou");
     }
 }
