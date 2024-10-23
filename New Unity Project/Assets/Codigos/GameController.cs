@@ -14,10 +14,16 @@ public class GameController: MonoBehaviour
     public int[] navegationUnities;
     public UnityEvent CanBuyShips;
 
+    private int[] upgradeQtt;
+    float timer;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        for (int i = 0; i < upgradeQtt[0]; i++)
+        {
+            Vector2 tempPos = new Vector2();
+        }
     }
 
     // Update is called once per frame
@@ -26,7 +32,7 @@ public class GameController: MonoBehaviour
         
     }
 
-    public void WarriorsNumUpgrade()
+    public void WarriorsNumQtt()
     {
         warriorsNum++;//Cria um guerreiro
         warriorsTxt.text = warriorsNum.ToString();//Atualiza o texto
