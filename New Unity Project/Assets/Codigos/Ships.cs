@@ -13,7 +13,7 @@ public class Ships : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        gc = FindObjectOfType(typeof (GameController)) as GameController;
     }
 
     // Update is called once per frame
@@ -21,7 +21,7 @@ public class Ships : MonoBehaviour
     {
         if(timer >= soliders)
         {
-            gc.WarriorsNumQtt();    
+            gc.WarriorsNumQtt();
             timer = 0;
         }
     }

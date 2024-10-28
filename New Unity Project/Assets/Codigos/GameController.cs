@@ -8,11 +8,14 @@ using UnityEngine.Events;
 public class GameController: MonoBehaviour
 {
     bool canUpgrade;
+    public Button[] upgradeBtn;
     public int[] upgradePrices;
-    public TMP_Text warriorsTxt;
+    public TMP_Text warriorsQtdTxt;
     public int warriorsNum;
     public int[] navegationUnities;
     public UnityEvent CanBuyShips;
+    public GameObject[] upgrades;
+    public Transform[] upgradePos;
 
     private int[] upgradeQtt;
     float timer;
@@ -20,10 +23,8 @@ public class GameController: MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < upgradeQtt[0]; i++)
-        {
-            Vector2 tempPos = new Vector2();
-        }
+       upgradeQtt = new int[upgrades.Length];
+        warriorsQtdTxt.text = warriorsNum.ToString();
     }
 
     // Update is called once per frame
@@ -35,7 +36,7 @@ public class GameController: MonoBehaviour
     public void WarriorsNumQtt()
     {
         warriorsNum++;//Cria um guerreiro
-        warriorsTxt.text = warriorsNum.ToString();//Atualiza o texto
+        warriorsQtdTxt.text = warriorsNum.ToString();//Atualiza o texto
         if(warriorsNum >= upgradePrices[0])
         {
             if (canUpgrade)
@@ -46,5 +47,30 @@ public class GameController: MonoBehaviour
             canUpgrade = true;
         }
         
+    }
+
+    public void UpgradesBTNInteractive()
+    {
+        for(int i = 0 ;i < upgradeBtn.Length; i++)
+        {
+            if(warriorsNum >= upgradePrices[0])// É o suficiente?
+            {
+                upgradeBtn[i].interactable = true;//Se tiver, interage
+            }
+            else
+            {
+                upgradeBtn[i].interactable = false;//Se não tiver, btn fica desativado
+            }
+        }
+    }
+
+    public void BuyShip(int UID)
+    {
+        Vector2 tempPos = new Vector2(upgradePos[UID].position.x, upgradePos[UID].position.y * -(upgradeQtt[UID] - 1) * 0.5f);//Cria o upgrade 
+        Instantiate(upgrades[UID], tempPos, transform.rotation);
+        warriorsNum -= upgradePrices[UID];// Subtrai o numero de soldado pelo valor do upgrade
+        warriorsQtdTxt.text = warriorsNum.ToString();// Sempre atualiza o texto quando o jogador fizer uma ação com os upgrades
+        upgradeQtt[0]++;
+        UpgradesBTNInteractive();//Verifica se tem soladados para encher os barcos
     }
 }
