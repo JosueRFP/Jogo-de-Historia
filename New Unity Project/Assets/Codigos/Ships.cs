@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Ships : MonoBehaviour
 {
-    public int soliders;
+    public int solidersTrained;
     float timer;
     GameController gc;
-    public int saveTimeRate;
+    
 
     private int[] upgradeQtt;
     // Start is called before the first frame update
@@ -19,10 +19,11 @@ public class Ships : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timer >= soliders)
+        timer += Time.deltaTime;//Somo o valor entre as variaveis
+        if(timer >= solidersTrained)
         {
-            gc.WarriorsNumQtt();
-            timer = 0;
+            gc.AddWarriorsNum();//Adiciona um Guerreiro
+            timer = 0;//Zera i contador
         }
     }
 }

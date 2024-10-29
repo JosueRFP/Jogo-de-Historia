@@ -7,18 +7,19 @@ using UnityEngine.Events;
 
 public class GameController: MonoBehaviour
 {
-    bool canUpgrade;
-    public Button[] upgradeBtn;
+    public int saveTimeRate;
     public int[] upgradePrices;
-    public TMP_Text warriorsQtdTxt;
     public int warriorsNum;
     public int[] navegationUnities;
     public UnityEvent CanBuyShips;
     public GameObject[] upgrades;
     public Transform[] upgradePos;
+    public TMP_Text warriorsQtdTxt;
+    public Button[] upgradeBtn;
 
     private int[] upgradeQtt;
     float timer;
+    bool canUpgrade;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +34,7 @@ public class GameController: MonoBehaviour
         
     }
 
-    public void WarriorsNumQtt()
+    public void AddWarriorsNum()
     {
         warriorsNum++;//Cria um guerreiro
         warriorsQtdTxt.text = warriorsNum.ToString();//Atualiza o texto
@@ -46,6 +47,7 @@ public class GameController: MonoBehaviour
             CanBuyShips.Invoke();
             canUpgrade = true;
         }
+        UpgradesBTNInteractive();
         
     }
 
