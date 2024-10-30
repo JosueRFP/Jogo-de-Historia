@@ -25,7 +25,6 @@ public class GameController: MonoBehaviour
     void Start()
     {
        upgradeQtt = new int[upgrades.Length];
-        warriorsQtdTxt.text = warriorsNum.ToString();
     }
 
     // Update is called once per frame
@@ -66,7 +65,7 @@ public class GameController: MonoBehaviour
         }
     }
 
-    public void BuyShip(int UID)
+    public void BuyShipUpgrader(int UID)
     {
         Vector2 tempPos = new Vector2(upgradePos[UID].position.x, upgradePos[UID].position.y * -(upgradeQtt[UID] - 1) * 0.5f);//Cria o upgrade 
         Instantiate(upgrades[UID], tempPos, transform.rotation);

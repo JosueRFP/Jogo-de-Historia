@@ -23,7 +23,7 @@ public class Ships : MonoBehaviour
         if(timer >= solidersTrained)
         {
             gc.AddWarriorsNum();//Adiciona um Guerreiro
-            timer = 0;//Zera i contador
+            
         }
     }
 }
