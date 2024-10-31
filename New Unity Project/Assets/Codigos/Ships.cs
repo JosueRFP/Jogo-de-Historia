@@ -5,7 +5,7 @@ using UnityEngine;
 public class Ships : MonoBehaviour
 {
     public int solidersTrained;
-    float timer;
+    public float timer;
     GameController gc;
     
 
@@ -18,12 +18,12 @@ public class Ships : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {        
         timer += Time.deltaTime;//Somo o valor entre as variaveis
         if(timer >= solidersTrained)
         {
             gc.AddWarriorsNum();//Adiciona um Guerreiro
-            
+            timer = 0;
         }
     }
 }
