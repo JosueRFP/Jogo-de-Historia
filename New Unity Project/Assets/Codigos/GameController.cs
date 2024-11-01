@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -30,7 +29,7 @@ public class GameController: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        UpgradesBTNInteractive();
     }
 
     public void AddWarriorsNum()
@@ -62,13 +61,15 @@ public class GameController: MonoBehaviour
             {
                 upgradeBtn[i].interactable = false;//Se não tiver, btn fica desativado
             }
-        }
+
+        }return;
     }
 
     public void BuyShipUpgrader(int UID)
     {
         Vector2 tempPos = new Vector2(upgradePos[UID].position.x, upgradePos[UID].position.y * -(upgradeQtt[UID] - 1) * 0.5f);//Cria o upgrade 
         Instantiate(upgrades[UID], tempPos, transform.rotation);
+        Debug.Log("Deu certo");
         warriorsNum -= upgradePrices[UID];// Subtrai o numero de soldado pelo valor do upgrade
         warriorsQtdTxt.text = warriorsNum.ToString();// Sempre atualiza o texto quando o jogador fizer uma ação com os upgrades
         upgradeQtt[0]++;
